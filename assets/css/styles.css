@@ -1,0 +1,31 @@
+
+/* -------------- Preloading Logo -------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;             /* pure black */
+  display: grid;
+  place-items: center;          /* centers the logo */
+  z-index: 9999;                /* above everything */
+}
+
+/* Logo, faint + gentle pulse */
+.preloader__logo {
+  width: clamp(288px, 15vw, 15vw); 
+  height: auto;
+  opacity: 0.7;
+  animation: lf-faintPulse 1.4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Subtle “breathing” effect */
+@keyframes lf-faintPulse {
+  0%   { transform: scale(1);    opacity: 0.4; }
+  50%  { transform: scale(1.01); opacity: 0.45; }
+  100% { transform: scale(1);    opacity: 0.4; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .preloader__logo { animation: none; }
+}
